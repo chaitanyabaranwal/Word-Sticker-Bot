@@ -7,8 +7,9 @@ import telegram
 import logging
 import helpers as c
 
-CONVERT_TEXT, STYLE_SELECT, IMAGE_RESIZE, TEXT_TRANSFORM, DELETE_STICKER, STYLE_CATEGORY_SELECT = range(6)
-text = ''
+CONVERT_TEXT, STYLE_SELECT, IMAGE_RESIZE, TEXT_TRANSFORM, DELETE_STICKER, STYLE_CATEGORY_SELECT, SET_DEFAULT = range(7)
+text = 'sample_text'
+default_style = 'rainbow'
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name) - %(levelname)s - %(message)s',
@@ -28,6 +29,7 @@ def help(bot, update):
 def cancel(bot, update):
     text = 'Command cancelled!'
     update.message.reply_text(text)
+    return ConversationHandler.END
 
 def styles(bot, update):
     update.message.reply_text("Here are the available styles!")
@@ -55,6 +57,8 @@ def stylesCategory(bot, update):
     return STYLE_SELECT
 
 def stylesSelect(bot, update):
+    if (update.message.text == 'Default'):
+        return CONVERT_TEXT
     custom_keyboard = c.selectStyleCategory(update.message.text)
     reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
     text = 'Select a style from the category!'
@@ -101,7 +105,37 @@ def deleteSticker(bot, update):
 
     return ConversationHandler.END
 
-# Start the bot
+###############################################
+# Functions to handle default style selection #
+###############################################
+
+def set_default(bot, update):
+    bot.send_message(update.message.chat_id, 'Okay! Please select your default style category.')
+    return STYLE_CATEGORY_SELECT
+
+def stylesCategory_default(bot, update):
+    custom_keyboard = c.style_categories_no_default
+    reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+    bot.send_message(update.message.chat_id, c.STYLE_TEXT, reply_markup=reply_markup)
+    return STYLE_SELECT
+
+def stylesSelect_default(bot, update):
+    custom_keyboard = c.selectStyleCategory(update.message.text)
+    reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+    text = 'Select a style from the category!'
+    bot.send_message(update.message.chat_id, text, reply_to_message_id=update.message.message_id,
+                        reply_markup=reply_markup)
+    return SET_DEFAULT
+
+def change_default(bot, update):
+    global default_style
+    default_style = update.message.text
+    update.message.reply_text('Okay! The default style is now ' + update.message.text)
+    return ConversationHandler.END
+
+##################
+# Start the bot #
+##################
 def main():
     updater = Updater("***REMOVED***")
     dp = updater.dispatcher
@@ -133,6 +167,18 @@ def main():
         fallbacks = [CommandHandler('cancel', cancel)]
     )
     dp.add_handler(stickerDeleteHandler)
+
+    # Handler to set default style
+    defaultStyleHandler = ConversationHandler(
+        entry_points = [CommandHandler('set_default', set_default)],
+        states = {
+            STYLE_CATEGORY_SELECT: [MessageHandler(Filters.text, stylesCategory_default)],
+            STYLE_SELECT: [MessageHandler(Filters.text, stylesSelect_default)],
+            SET_DEFAULT: [MessageHandler(Filters.text, change_default)]
+        },
+        fallbacks = [CommandHandler('cancel', cancel)]
+    )
+    dp.add_handler(defaultStyleHandler)
 
     updater.start_polling()
 

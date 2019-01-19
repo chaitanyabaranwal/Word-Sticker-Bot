@@ -1,0 +1,411 @@
+@import url(https://fonts.googleapis.com/css?family=El+Messiri|Bangers|Abril+Fatface|Luckiest+Guy|Srisakdi|Staatliches|Mr+Dafoe|Righteous|Permanent+Marker|Monoton|Finger+Paint|Galada|Mystery+Quest|Nosifer|Sail|Spirax|Calligraffitti|Homemade+Apple|Sacramento);
+
+/*SIMPLE*/
+.arial {
+  font-family: 'Arial', cursive;
+  color: #000;
+}
+
+.comic-sans {
+  font-family: 'Comic Sans MS', cursive;
+  color: #000;
+}
+
+.impact {
+  font-family: 'Impact', sans-serif;
+  color: #FFF;
+  -webkit-text-stroke: 0.01em #000;
+}
+
+.courier {
+  font-family: "Courier New",  monospace;
+  color: #000;
+}
+
+.el-messiri {
+  font-family: 'El Messiri', sans-serif;
+  color: #000;
+}
+
+/* Bold */
+
+.bangers {
+  font-family: 'Bangers', sans-serif;
+  color: #000;
+}
+
+
+.luckiest-guy {
+  font-family: 'Luckiest Guy', sans-serif;
+  color: #000;
+}
+
+/* fixed font size */
+.nosifer {
+  font-size: 30px !important;
+  font-family: 'Nosifer', sans-serif;
+  color: #000;
+}
+
+.staatliches {
+  font-family: 'Staatliches', sans-serif;
+  color: #000;
+}
+/* Fancy */
+
+
+.abril-fatface {
+  font-family: 'Abril Fatface', sans-serif;
+  color: #000;
+}
+
+
+.galada {
+  font-family: 'Galada', sans-serif;
+  color: #000;
+}
+
+.mystery-quest {
+  font-family: 'mystery quest', sans-serif;
+  color: #000;
+  padding-left: 10px;
+}
+
+.sail {
+  font-family: 'Sail', sans-serif;
+  color: #000;
+}
+
+.spirax {
+  font-family: 'Spirax', sans-serif;
+  color: #000;
+}
+
+.srisakdi {
+  font-family: 'Srisakdi', sans-serif;
+  color: #000;
+}
+
+/* handwritten */
+
+.finger-paint {
+  font-family: 'Finger Paint', sans-serif;
+  color: #000;
+}
+
+.calligraffitti {
+  font-family: 'Calligraffitti', sans-serif;
+  color: #000;
+}
+
+.homemade-apple {
+  font-family: 'Homemade Apple', sans-serif;
+  color: #000;
+  padding-left: 20px;
+}
+
+.sacramento {
+  font-family: 'Sacramento', sans-serif;
+  color: #000;
+}
+
+/* RETRO */
+.dreams {
+  position: relative;
+  margin: 0px;
+  font-family: 'Mr Dafoe', cursive;
+  color: #F975F7;
+  -webkit-text-stroke: 1px #f008b7;
+  -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
+  padding-left: 30px;
+}
+
+.chrome {
+  position: relative;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.1px #f1f1f1;
+  font-family: 'Righteous', cursive;
+  font-size: 5em !important;
+
+  padding-left: 30px;
+
+  -webkit-background-clip: text;
+  background-image: -webkit-linear-gradient(#C3BFB4 0%, #FDFCFA 50%, #E8E7E5 51%, #757172 52%, #E8E9DB 100%);
+  -webkit-filter: drop-shadow(2px 2px 15px #3F59F4);
+}
+
+.chrome:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /*-webkit-animation:chrome_effect 0.067s infinite;*/
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, rgba(255,255,255,0) 1px, rgba(255,255,255,0) 2px);
+}
+
+.wilderness {
+  position: relative;
+  font-family: 'Permanent Marker', cursive;
+  font-variant:small-caps;
+  /* -webkit-transform: skew(-15deg,-15deg); */
+  padding-left: 0.1em;
+  background-image: -webkit-linear-gradient(#b3f530 0%,  #125536 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  -webkit-filter: drop-shadow(20px 20px 200px #f008b7);
+}
+
+
+.future {
+  position: relative;
+  font-family: 'Mr Dafoe', cursive;
+  color: #00212B;
+  -webkit-text-fill-color: rgba(255, 128, 45, 1);
+  text-shadow: -2px -2px 0 #FFB220;
+  -webkit-filter: drop-shadow(3px 3px 1px #542A0F);
+  -webkit-transform: skew(-5deg,-5deg);
+  font-weight: normal;
+  padding-left: 0.5em;
+}
+
+.cop {
+  position: relative;
+  font-family: 'Monoton', cursive;
+  line-height: 1;
+  padding-left: 80px;
+  /* font-weight: normal; */
+  background-image: -webkit-linear-gradient(#022486 0%, #0AD0FD 30%, #BDFCFC 40%, #D8FFFF 44%, #00081C 44%, #00081C 50%, #074A67 52%, #1CD8FE 60%, #7FEDFE 62%, #96F5FC 70%, #0FD8FA 73%, #0BD2FD 88%, #AFFDFF 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  font-weight: 400;
+}
+
+.cop:before {
+  position: absolute;
+  content: '';
+  background-image: -webkit-radial-gradient(#fff 0%, transparent 85%);
+  z-index: 4;
+  -webkit-animation-name: cop_before_effect;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.cop:after {
+  position: absolute;
+  content: '';
+  background-image: -webkit-radial-gradient(#fff 0%, transparent 85%);
+  z-index: 4;
+  -webkit-animation-name: cop_after_effect;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+
+@-webkit-keyframes cop_before_effect {
+  0% {
+    left: 51px;
+    top: 74px;
+    opacity: 0;}
+  
+  15% {
+    left: 51px;
+    top: 74px;
+    opacity: 1;}
+  
+  30% {
+    left: 51px;
+    top: 74px;
+    opacity: 0;}
+  
+  35% {
+    left: 370px;
+    top: 45px;
+    opacity: 0;}
+   
+  50% {
+    left: 370px;
+    top: 45px;
+    opacity: 1;}
+  
+  65% {
+    left: 370px;
+    top: 45px;
+    opacity: 0;}
+  
+  70% {
+    left: 564px;
+    top: 74px;
+    opacity: 0;}
+   
+  85% {
+    left: 564px;
+    top: 74px;
+    opacity: 1;}
+  
+  100% {
+    left: 564px;
+    top: 74px;
+    opacity: 0;}
+}
+
+@-webkit-keyframes cop_after_effect {
+  0% {
+    left: 90px;
+    top: 32px;
+    opacity: 0;}
+  
+  15% {
+    left: 90px;
+    top: 32px;
+    opacity: 1;}
+  
+  30% {
+    left: 90px;
+    top: 32px;
+    opacity: 0;}
+  
+  35% {
+    left: 413px;
+    top: 11px;
+    opacity: 0;}
+   
+  50% {
+    left: 413px;
+    top: 11px;
+    opacity: 1;}
+  
+  65% {
+    left: 413px;
+    top: 11px;
+    opacity: 0;}
+  
+  70% {
+    left: 603px;
+    top: 32px;
+    opacity: 0;}
+   
+  85% {
+    left: 603px;
+    top: 32px;
+    opacity: 1;}
+  
+  100% {
+    left: 603px;
+    top: 32px;
+    opacity: 0;}
+}
+
+
+/*WORDART*/
+/* 
+.wordart {
+  font-family: Arial, sans-serif;
+  font-size: 12em;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+} */
+
+.rainbow{
+  background: red; 
+  background: -webkit-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
+  background: -o-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
+  background: -moz-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
+  background: linear-gradient(to right, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af); 
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.blues {
+    font-family: Impact, sans-serif;
+    color: #24c0fd;
+    -webkit-text-stroke: 0.01em #0000aa;
+    filter: progid:DXImageTransform.Microsoft.Glow(Color=#0000aa,Strength=1);
+    text-shadow: 0.13em -0.13em 0px #0000aa;
+    letter-spacing: -0.05em;
+
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.purple{
+    letter-spacing: -0.01em;
+    font-family: Impact;
+    background: #4222be;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(top, #4222be 0%, #a62cc1 73%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4222be), color-stop(73%, #a62cc1));
+    background: -webkit-linear-gradient(top, #4222be 0%, #a62cc1 73%);
+    background: -o-linear-gradient(top, #4222be 0%, #a62cc1 73%);
+    background: -ms-linear-gradient(top, #4222be 0%, #a62cc1 73%);
+    background: linear-gradient(to bottom, #4222be 0%, #a62cc1 73%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4222be', endColorstr='#a62cc1', GradientType=0);
+    -webkit-text-stroke: 0.01em #B28FFD;
+    filter: progid:DXImageTransform.Microsoft.Glow(Color=#b28ffd, Strength=1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.horizon {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    background: #7286a7;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #7286a7 0%, #7286a7 13%, #ffffff 50%, #812f30 56%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7286a7), color-stop(13%, #7286a7), color-stop(50%, #ffffff), color-stop(56%, #812f30), color-stop(100%, #ffffff));
+    background: -webkit-linear-gradient(top, #7286a7 0%, #7286a7 13%, #ffffff 50%, #812f30 56%, #ffffff 100%);
+    background: -o-linear-gradient(top, #7286a7 0%, #7286a7 13%, #ffffff 50%, #812f30 56%, #ffffff 100%);
+    background: -ms-linear-gradient(top, #7286a7 0%, #7286a7 13%, #ffffff 50%, #812f30 56%, #ffffff 100%);
+    background: linear-gradient(to bottom, #7286a7 0%, #7286a7 13%, #ffffff 50%, #812f30 56%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7286a7', endColorstr='#ffffff', GradientType=0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.horizon:before {
+    content: attr(data-text);
+    position: absolute;
+    z-index: -1;
+    text-shadow: 0.01em 0em 0 #161616, 0em 0.01em 0 #8d8d8d, 0.02em 0.01em 0 #161616, 0.01em 0.02em 0 #8d8d8d, 0.03em 0.02em 0 #161616, 0.02em 0.03em 0 #8d8d8d, 0.04em 0.03em 0 #161616, 0.03em 0.04em 0 #8d8d8d, 0.05em 0.04em 0 #161616, 0.04em 0.05em 0 #8d8d8d, 0.06em 0.05em 0 #161616, 0.05em 0.06em 0 #8d8d8d, 0.07em 0.06em 0 #161616, 0.06em 0.07em 0 #8d8d8d, 0.08em 0.07em 0 #161616, 0.07em 0.08em 0 #8d8d8d, 0.09em 0.08em 0 #161616, 0.08em 0.09em 0 #8d8d8d, 0.1em 0.09em 0 #161616, 0.09em 0.1em 0 #8d8d8d;
+}

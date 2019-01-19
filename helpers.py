@@ -6,6 +6,7 @@ to help you navigate through. :)
 /text - Enter text, select style and get your sticker!
 /styles - View available styles
 /image - Input image and resize it in standard sticker size
+/default_style - Set the default style
 """
 
 TEXT_CONVERT_TEXT = """
@@ -22,6 +23,13 @@ Please enter the index of the sticker you want to delete (starting from 1).
 
 # List with available stylec-categories
 style_categories = [
+    ['Default'],
+    ['basic', 'bold'],
+    ['fancy', 'handwritten'],
+    ['wordart', 'retro']
+]
+
+style_categories_no_default = [
     ['basic', 'bold'],
     ['fancy', 'handwritten'],
     ['wordart', 'retro']
