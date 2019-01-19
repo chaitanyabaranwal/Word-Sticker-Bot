@@ -2,11 +2,11 @@ HELP_TEXT = """
 Welcome to text-sticker bot! Here is a list of commands
 to help you navigate through. :)
 
-/help - Look here if you get stuck!
-/text - Enter text, select style and get your sticker!
-/styles - View available styles
-/image - Input image and resize it in standard sticker size
+/help - Shows this help dialogue.
+/text - Create a new sticker out of text. Enter text, select style and get your sticker! A maximum of 100 characters is allowed.
+/styles - View available styles. Choose from: Basic, Bold, Fancy, Handwritten, Wordart, and Decorative.
 /default_style - Set the default style
+/delete - Delete a previously created sticker. Send the sticker you want to delete or its index in the pack.
 """
 
 TEXT_CONVERT_TEXT = """
