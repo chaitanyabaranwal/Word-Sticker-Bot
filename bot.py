@@ -48,6 +48,9 @@ def textConvert(bot, update):
     return STYLE_CATEGORY_SELECT
 
 def stylesCategory(bot, update):
+    if len(update.message.text) > 100:
+        update.message.reply_text("Text can't be over 100 characters!")
+        return ConversationHandler.END
     global text 
     text = update.message.text
     custom_keyboard = c.style_categories
