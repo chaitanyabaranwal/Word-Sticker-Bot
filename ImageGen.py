@@ -28,6 +28,6 @@ def ImageGen(text, styleClass):
     # need to resize the image! (not done)
     # remember to change the following css file location
     css = 'test_fonts.css'
-    return imgkit.from_string(htmlString, 'test.png', css=css, options=options)
+    return imgkit.from_string(htmlString, 'images/test.png', css=css, options=options)
 
 ImageGen("Hello", "rainbow")

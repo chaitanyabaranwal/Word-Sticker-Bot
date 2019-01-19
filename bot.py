@@ -5,9 +5,9 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Conve
 from ImageGen import ImageGen
 import telegram
 import logging
-import constants as c
+import helpers as c
 
-CONVERT_TEXT, STYLE_SELECT, IMAGE_RESIZE, TEXT_TRANSFORM, DELETE_STICKER = range(5)
+CONVERT_TEXT, STYLE_SELECT, IMAGE_RESIZE, TEXT_TRANSFORM, DELETE_STICKER, STYLE_CATEGORY_SELECT = range(6)
 text = ''
 
 # Enable logging
@@ -29,6 +29,10 @@ def cancel(bot, update):
     text = 'Command cancelled!'
     update.message.reply_text(text)
 
+def styles(bot, update):
+    update.message.reply_text("Here are the available styles!")
+    bot.send_photo(update.message.chat_id, open('images/styles.jpg', 'rb'))
+
 def error(bot, update, error):
     logger.warning('Update caused error "%s"', error)
 
@@ -39,18 +43,28 @@ def error(bot, update, error):
 def textConvert(bot, update):
     bot.send_message(update.message.chat_id, c.TEXT_CONVERT_TEXT, reply_to_message_id=update.message.message_id,
                         reply_markup=telegram.ForceReply())
-    return STYLE_SELECT
+    return STYLE_CATEGORY_SELECT
 
-def styles(bot, update):
+def stylesCategory(bot, update):
     global text 
     text = update.message.text
+    custom_keyboard = c.style_categories
+    reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
     bot.send_message(update.message.chat_id, c.STYLE_TEXT, reply_to_message_id=update.message.message_id,
-                        reply_markup=telegram.ForceReply())
+                        reply_markup=reply_markup)
+    return STYLE_SELECT
+
+def stylesSelect(bot, update):
+    custom_keyboard = c.selectStyleCategory(update.message.text)
+    reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+    text = 'Select a style from the category!'
+    bot.send_message(update.message.chat_id, text, reply_to_message_id=update.message.message_id,
+                        reply_markup=reply_markup)
     return CONVERT_TEXT
 
 def transformText(bot, update):
     ImageGen(text, update.message.text)
-    with open('test.png', 'rb') as f:
+    with open('images/test.png', 'rb') as f:
         file = bot.upload_sticker_file(update.message.from_user.id, f)
     assert file
 
@@ -95,6 +109,7 @@ def main():
     # Set up commands
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("styles", styles))
     dp.add_error_handler(error)
 
     # Handler to manage text styling
@@ -102,7 +117,8 @@ def main():
         entry_points = [CommandHandler('text', textConvert)],
         states = {
             CONVERT_TEXT: [MessageHandler(Filters.text, transformText)],
-            STYLE_SELECT: [MessageHandler(Filters.text, styles)],
+            STYLE_SELECT: [MessageHandler(Filters.text, stylesSelect)],
+            STYLE_CATEGORY_SELECT: [MessageHandler(Filters.text, stylesCategory)]
         },
         fallbacks = [CommandHandler('cancel', cancel)]
     )
