@@ -26,13 +26,13 @@ style_categories = [
     ['Default'],
     ['basic', 'bold'],
     ['fancy', 'handwritten'],
-    ['wordart', 'retro']
+    ['wordart', 'decorative']
 ]
 
 style_categories_no_default = [
     ['basic', 'bold'],
     ['fancy', 'handwritten'],
-    ['wordart', 'retro']
+    ['wordart', 'decorative']
 ]
 
 # Lists with styles in each category
@@ -63,9 +63,9 @@ wordart_styles = [
     ['horizon', 'purple']
 ]
 
-retro_styles = [
+decorative_styles = [
     ['dreams', 'chrome'],
-    ['victory', 'future'],
+    ['wilderness', 'future'],
     ['cop']
 ]
 
@@ -80,5 +80,5 @@ def selectStyleCategory(styleCategory):
         return handwritten_styles
     elif styleCategory == 'wordart':
         return wordart_styles
-    elif styleCategory == 'retro':
-        return retro_styles
+    elif styleCategory == 'decorative':
+        return decorative_styles
