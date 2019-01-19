@@ -1,4 +1,5 @@
 import imgkit
+from PIL import Image
 
 def findMultiplier(letters):
     return 8.6 - 2.75 * pow(letters, 0.189)
@@ -21,8 +22,11 @@ def ImageGen(text, styleClass):
     # Image options
     options = {
         'transparent': None,
-        'crop-w': 512
+        'crop-w': 512,
     }
 
     css = 'styles.css'
-    return imgkit.from_string(htmlString, 'images/test.png', css=css, options=options)
+    imgkit.from_string(htmlString, 'images/test.png', css=css, options=options)
+
+    foo = Image.open('images/test.png')
+    foo.save('images/test.png', optimize=True)

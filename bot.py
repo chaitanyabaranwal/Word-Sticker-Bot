@@ -33,7 +33,7 @@ def cancel(bot, update):
 
 def styles(bot, update):
     update.message.reply_text("Here are the available styles!")
-    bot.send_photo(update.message.chat_id, open('images/styles.jpg', 'rb'))
+    bot.send_photo(update.message.chat_id, open('images/styles.png', 'rb'))
 
 def error(bot, update, error):
     logger.warning('Update caused error "%s"', error)
