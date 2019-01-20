@@ -80,7 +80,7 @@ def transformText(bot, update):
     assert file
 
     # Create/add to sticker pack and return sticker
-    sticker_set_name = "WordArt_%s_by_HackandRoll_Testbot" % update.message.from_user['username']
+    sticker_set_name = "WordArt_%s_by_WordStickerBot" % update.message.from_user['username']
     try:
         bot.add_sticker_to_set(update.message.from_user.id, sticker_set_name,
             file.file_id, '😄')
@@ -103,7 +103,7 @@ def delete(bot, update):
 
 def deleteSticker(bot, update):
     try:
-        sticker_set_name = "WordArt_%s_by_HackandRoll_Testbot" % update.message.from_user['username']
+        sticker_set_name = "WordArt_%s_by_WordStickerBot" % update.message.from_user['username']
         sticker_set = bot.get_sticker_set(sticker_set_name)
         bot.delete_sticker_from_set(sticker_set.stickers[int(update.message.text) - 1].file_id)
         update.message.reply_text("Sticker deleted!")
