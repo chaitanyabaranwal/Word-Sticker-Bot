@@ -21,7 +21,7 @@ How does it work? It converts the user's text message into an HTML string styled
 4. Run `python bot.py`.
 
 ## Deployment
-The bot has been deployed on [Heroku](https://www.heroku.com/), you can find it [here](link).
+The bot has been deployed on Telegram, you can find it @WordStickerBot.
 
 ## Built With
 * [Python Telegram Bot](https://github.com/python-telegram-bot/python-telegram-bot) - The bot API used
@@ -32,8 +32,8 @@ The bot has been deployed on [Heroku](https://www.heroku.com/), you can find it 
 **Team Ankrypt** 
 <img src="https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/ankrypt-logo.png" width="100" height="100">
 * **Chaitanya Baranwal** - *CS Undergraduate, National University of Singapore (NUS)* - Github: [chaitanyabaranwal](https://github.com/chaitanyabaranwal)
-* **Ong Yan Chun** - *National University of Singapore (NUS)* - Github: [yaaanch](https://github.com/yaaanch)
-* **Liu Zechu** - *National University of Singapore (NUS)* - Github: [LiuZechu](https://github.com/LiuZechu)
+* **Ong Yan Chun** - *CS Undergraduate, National University of Singapore (NUS)* - Github: [yaaanch](https://github.com/yaaanch)
+* **Liu Zechu** - *CS Undergraduate, National University of Singapore (NUS)* - Github: [LiuZechu](https://github.com/LiuZechu)
 
 ## Acknowledgments
 * Free time and lack of sleep
