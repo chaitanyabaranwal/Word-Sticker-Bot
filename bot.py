@@ -113,16 +113,12 @@ def deleteSticker(bot, update):
 ###############################################
 
 def set_default(bot, update):
-    bot.send_message(update.message.chat_id, 'Okay! Please select your default style category.')
-    return STYLE_CATEGORY_SELECT
-
-def stylesCategory_default(bot, update):
     custom_keyboard = c.style_categories_no_default
     reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
     bot.send_message(update.message.chat_id, c.STYLE_TEXT, reply_markup=reply_markup)
     return STYLE_SELECT
 
-def stylesSelect_default(bot, update):
+def stylesSelectDefault(bot, update):
     custom_keyboard = c.selectStyleCategory(update.message.text)
     reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
     text = 'Select a style from the category!'
@@ -130,10 +126,10 @@ def stylesSelect_default(bot, update):
                         reply_markup=reply_markup)
     return SET_DEFAULT
 
-def change_default(bot, update):
+def changeDefault(bot, update):
     global default_style
     default_style = update.message.text
-    update.message.reply_text('Okay! The default style is now ' + update.message.text)
+    update.message.reply_text('Okay! The default style is now ' + update.message.text + '.')
     return ConversationHandler.END
 
 ##################
@@ -175,9 +171,8 @@ def main():
     defaultStyleHandler = ConversationHandler(
         entry_points = [CommandHandler('set_default', set_default)],
         states = {
-            STYLE_CATEGORY_SELECT: [MessageHandler(Filters.text, stylesCategory_default)],
-            STYLE_SELECT: [MessageHandler(Filters.text, stylesSelect_default)],
-            SET_DEFAULT: [MessageHandler(Filters.text, change_default)]
+            STYLE_SELECT: [MessageHandler(Filters.text, stylesSelectDefault)],
+            SET_DEFAULT: [MessageHandler(Filters.text, changeDefault)]
         },
         fallbacks = [CommandHandler('cancel', cancel)]
     )
