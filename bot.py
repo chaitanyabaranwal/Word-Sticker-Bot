@@ -61,7 +61,8 @@ def stylesCategory(bot, update):
 
 def stylesSelect(bot, update):
     if (update.message.text == 'Default'):
-        return CONVERT_TEXT
+        transformText(bot, update)
+        return ConversationHandler.END
     custom_keyboard = c.selectStyleCategory(update.message.text)
     reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
     text = 'Select a style from the category!'
@@ -70,7 +71,10 @@ def stylesSelect(bot, update):
     return CONVERT_TEXT
 
 def transformText(bot, update):
-    ImageGen(text, update.message.text)
+    if (update.message.text == 'Default'):
+        ImageGen(text, default_style)
+    else:
+        ImageGen(text, update.message.text)
     with open('images/test.png', 'rb') as f:
         file = bot.upload_sticker_file(update.message.from_user.id, f)
     assert file
