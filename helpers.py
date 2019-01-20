@@ -5,7 +5,7 @@ to help you navigate through. :)
 /help - Shows this help dialogue.
 /text - Create a new sticker out of text. Enter text, select style and get your sticker! A maximum of 100 characters is allowed.
 /styles - View available styles. Choose from: Basic, Bold, Fancy, Handwritten, Wordart, and Decorative.
-/default_style - Set the default style
+/set_default - Set the default style
 /delete - Delete a previously created sticker. Send the sticker you want to delete or its index in the pack.
 """
 

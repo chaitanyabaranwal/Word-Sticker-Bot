@@ -9,7 +9,7 @@ How does it work? It converts the user's text message into an HTML string styled
 ## Features
 1. `/text` prompts the user to enter text of at most 100 characters, and allows the user to select from around 30 fonts to create a sticker.
 2. `/styles` displays all available styles, which are categorized into Basic, Bold, Fancy, Handwritten, Wordart, and Decorative.
-3. `/default_style` sets the default style.
+3. `/set_default` sets the default style.
 4. `/delete deletes` a previously created sticker. The user can send the sticker they want to delete or its index in the pack.
 5. `/help` shows the help dialogue.
 
