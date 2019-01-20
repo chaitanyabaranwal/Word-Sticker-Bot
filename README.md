@@ -1,4 +1,4 @@
-# Word Sticker Bot ![Bot Logo](https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/bot_logo.jpg =200x200 "@WordStickerBot")
+# Word Sticker Bot ![Bot Logo](https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/bot_logo.jpg =200x200)
 
 This Telegram bot stylizes any text sent by the user, and generates a sticker which is added to the user's individual sticker set.
 
@@ -28,7 +28,7 @@ The bot has been deployed on [Heroku](https://www.heroku.com/), you can find it 
 * [PIL](https://pillow.readthedocs.io/en/stable/) - for PNG image compression
 
 ## Authors
-**Team Ankrypt** ![Team Logo](https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/ankrypt-logo.png =200x200"Team Ankrypt")
+**Team Ankrypt** ![Team Logo](https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/ankrypt-logo.png =200x200)
 * **Chaitanya Baranwal** - *CS Undergraduate, National University of Singapore (NUS)* - Github: [chaitanyabaranwal](https://github.com/chaitanyabaranwal)
 * **Ong Yan Chun** - *National University of Singapore (NUS)* - Github: [yaaanch](https://github.com/yaaanch)
 * **Liu Zechu** - *National University of Singapore (NUS)* - Github: [LiuZechu](https://github.com/LiuZechu)
