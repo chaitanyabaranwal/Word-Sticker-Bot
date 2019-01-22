@@ -23,6 +23,7 @@ def ImageGen(text, styleClass):
     options = {
         'transparent': None,
         'crop-w': 512,
+        'xvfb': ''
     }
 
     css = 'styles.css'

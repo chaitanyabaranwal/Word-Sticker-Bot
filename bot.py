@@ -80,13 +80,14 @@ def transformText(bot, update):
     assert file
 
     # Create/add to sticker pack and return sticker
-    sticker_set_name = "WordArt_%s_by_WordStickerBot" % update.message.from_user['username']
+    username = update.message.from_user['username']
+    sticker_set_name = "WordArt_%s_by_WordStickerBot" % username
     try:
         bot.add_sticker_to_set(update.message.from_user.id, sticker_set_name,
             file.file_id, '😄')
     except:
         bot.create_new_sticker_set(update.message.from_user.id, sticker_set_name, 
-            "WordArt", file.file_id, '😄')
+            "WordArt_by_%s" % username, file.file_id, '😄')
     finally:
         sticker_set = bot.get_sticker_set(sticker_set_name)
         bot.send_sticker(update.message.chat_id, sticker_set.stickers[-1])
