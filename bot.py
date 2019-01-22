@@ -160,7 +160,8 @@ def main():
             STYLE_SELECT: [MessageHandler(Filters.text, stylesSelect)],
             STYLE_CATEGORY_SELECT: [MessageHandler(Filters.text, stylesCategory)]
         },
-        fallbacks = [CommandHandler('cancel', cancel)]
+        fallbacks = [CommandHandler('cancel', cancel)],
+        conversation_timeout = 10.0,
     )
     dp.add_handler(textConvertHandler)
 
@@ -170,7 +171,8 @@ def main():
         states = {
             DELETE_STICKER: [MessageHandler(Filters.text, deleteSticker)]
         },
-        fallbacks = [CommandHandler('cancel', cancel)]
+        fallbacks = [CommandHandler('cancel', cancel)],
+        conversation_timeout = 10.0,
     )
     dp.add_handler(stickerDeleteHandler)
 
@@ -181,7 +183,8 @@ def main():
             STYLE_SELECT: [MessageHandler(Filters.text, stylesSelectDefault)],
             SET_DEFAULT: [MessageHandler(Filters.text, changeDefault)]
         },
-        fallbacks = [CommandHandler('cancel', cancel)]
+        fallbacks = [CommandHandler('cancel', cancel)],
+        conversation_timeout = 10.0,
     )
     dp.add_handler(defaultStyleHandler)
 
