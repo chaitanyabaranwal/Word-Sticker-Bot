@@ -90,6 +90,8 @@ def transformText(bot, update):
             "WordArt_by_%s" % username, file.file_id, '😄')
     finally:
         sticker_set = bot.get_sticker_set(sticker_set_name)
+        if len(sticker_set.stickers) > 50:
+            bot.delete_sticker_from_set(sticker_set.stickers[0])
         bot.send_sticker(update.message.chat_id, sticker_set.stickers[-1])
 
     return ConversationHandler.END
