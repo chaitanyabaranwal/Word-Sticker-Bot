@@ -3,6 +3,7 @@
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
 from ImageGen import ImageGen
+import hashlib
 import telegram
 import logging
 import helpers as c
@@ -81,7 +82,10 @@ def transformText(bot, update):
 
     # Create/add to sticker pack and return sticker
     username = update.message.from_user['username']
-    sticker_set_name = "WordArt_%s_by_WordStickerBot" % username
+    print(username)
+    hash = hashlib.sha1(bytearray(update.effective_user.id)).hexdigest()
+    sticker_set_name = "WordArt_%s_by_WordStickerBot" % hash[:20]
+    print(sticker_set_name)
     try:
         bot.add_sticker_to_set(update.message.from_user.id, sticker_set_name,
             file.file_id, '😄')
@@ -90,9 +94,8 @@ def transformText(bot, update):
             "WordArt_by_%s" % username, file.file_id, '😄')
     finally:
         sticker_set = bot.get_sticker_set(sticker_set_name)
-        if len(sticker_set.stickers) > 50:
-            bot.delete_sticker_from_set(sticker_set.stickers[0])
-        bot.send_sticker(update.message.chat_id, sticker_set.stickers[-1])
+        bot.send_sticker(update.message.chat_id, sticker_set.stickers[-1], 
+                            reply_markup=telegram.ReplyKeyboardRemove())
 
     return ConversationHandler.END
 
@@ -106,7 +109,8 @@ def delete(bot, update):
 
 def deleteSticker(bot, update):
     try:
-        sticker_set_name = "WordArt_%s_by_WordStickerBot" % update.message.from_user['username']
+        hash = hashlib.sha1(bytearray(update.effective_user.id)).hexdigest()
+        sticker_set_name = "WordArt_%s_by_WordStickerBot" % hash[:20]
         sticker_set = bot.get_sticker_set(sticker_set_name)
         bot.delete_sticker_from_set(sticker_set.stickers[int(update.message.text) - 1].file_id)
         update.message.reply_text("Sticker deleted!")
@@ -136,7 +140,8 @@ def stylesSelectDefault(bot, update):
 def changeDefault(bot, update):
     global default_style
     default_style = update.message.text
-    update.message.reply_text('Okay! The default style is now ' + update.message.text + '.')
+    bot.send_message(update.message.chat_id, 'Okay! The default style is now ' + update.message.text + '.',
+                        reply_markup=telegram.ReplyKeyboardRemove())
     return ConversationHandler.END
 
 ##################
