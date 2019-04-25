@@ -1,5 +1,7 @@
 # Word Sticker Bot 
-<img src="https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/logo-new.png" width="100" height="100">
+<p align="center">
+    <img src="https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/logo-new.png" width="100" height="100">
+</p>
 
 This Telegram bot stylizes any text sent by the user, and generates a sticker which is added to the user's individual sticker set.
 
@@ -30,7 +32,11 @@ The bot has been deployed on Telegram, you can find it @WordStickerBot.
 
 ## Authors
 **Team Ankrypt** 
-<img src="https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/ankrypt-logo.png" width="100" height="100">
+
+<p align="center">
+    <img src="https://github.com/chaitanyabaranwal/WordArt_Telegram_Bot/blob/master/images/ankrypt-logo.png" width="100" height="100">
+</p>
+
 * **Chaitanya Baranwal** - *CS Undergraduate, National University of Singapore (NUS)* - Github: [chaitanyabaranwal](https://github.com/chaitanyabaranwal)
 * **Ong Yan Chun** - *CS Undergraduate, National University of Singapore (NUS)* - Github: [yaaanch](https://github.com/yaaanch)
 * **Liu Zechu** - *CS Undergraduate, National University of Singapore (NUS)* - Github: [LiuZechu](https://github.com/LiuZechu)
