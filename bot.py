@@ -148,7 +148,7 @@ def changeDefault(bot, update):
 # Start the bot #
 ##################
 def main():
-    updater = Updater("***REMOVED***")
+    updater = Updater("TOKEN")
     dp = updater.dispatcher
 
     # Set up commands
