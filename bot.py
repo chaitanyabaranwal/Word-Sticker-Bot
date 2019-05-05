@@ -6,10 +6,14 @@ from ImageGen import ImageGen
 import hashlib
 import telegram
 import logging
-import helpers as c
+import constants as c
+import redis
 
+# Setup redis for user data management
+redis_client = redis.StrictRedis(host='localhost', port=6379, db=0, decode_responses=True)
+
+# Other required constants
 CONVERT_TEXT, STYLE_SELECT, IMAGE_RESIZE, TEXT_TRANSFORM, DELETE_STICKER, STYLE_CATEGORY_SELECT, SET_DEFAULT = range(7)
-text = 'sample_text'
 default_style = 'rainbow'
 
 # Enable logging
@@ -33,7 +37,7 @@ def cancel(bot, update):
     return ConversationHandler.END
 
 def styles(bot, update):
-    update.message.reply_text("Here are the available styles!")
+    update.message.reply_text('Here are the available styles!')
     bot.send_photo(update.message.chat_id, open('images/styles.png', 'rb'))
 
 def error(bot, update, error):
@@ -50,10 +54,9 @@ def textConvert(bot, update):
 
 def stylesCategory(bot, update):
     if len(update.message.text) > 100:
-        update.message.reply_text("Text can't be over 100 characters!")
+        update.message.reply_text('Text can\'t be over 100 characters!')
         return ConversationHandler.END
-    global text 
-    text = update.message.text
+    redis_client.hset(update.message.from_user.id, "text", update.message.text)
     custom_keyboard = c.style_categories
     reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
     bot.send_message(update.message.chat_id, c.STYLE_TEXT, reply_to_message_id=update.message.message_id,
@@ -72,8 +75,9 @@ def stylesSelect(bot, update):
     return CONVERT_TEXT
 
 def transformText(bot, update):
+    text = redis_client.hget(update.message.from_user.id, "text")
     if (update.message.text == 'Default'):
-        ImageGen(text, default_style)
+        ImageGen(text, redis_client.hget(update.message.from_user.id, 'default_style'))
     else:
         ImageGen(text, update.message.text)
     with open('images/test.png', 'rb') as f:
@@ -82,10 +86,8 @@ def transformText(bot, update):
 
     # Create/add to sticker pack and return sticker
     username = update.message.from_user['username']
-    print(username)
     hash = hashlib.sha1(bytearray(update.effective_user.id)).hexdigest()
-    sticker_set_name = "WordArt_%s_by_WordStickerBot" % hash[:20]
-    print(sticker_set_name)
+    sticker_set_name = 'WordArt_%s_by_WordStickerBot' % hash[:20]
     try:
         bot.add_sticker_to_set(update.message.from_user.id, sticker_set_name,
             file.file_id, '😄')
@@ -110,12 +112,12 @@ def delete(bot, update):
 def deleteSticker(bot, update):
     try:
         hash = hashlib.sha1(bytearray(update.effective_user.id)).hexdigest()
-        sticker_set_name = "WordArt_%s_by_WordStickerBot" % hash[:20]
+        sticker_set_name = 'WordArt_%s_by_WordStickerBot' % hash[:20]
         sticker_set = bot.get_sticker_set(sticker_set_name)
         bot.delete_sticker_from_set(sticker_set.stickers[int(update.message.text) - 1].file_id)
-        update.message.reply_text("Sticker deleted!")
+        update.message.reply_text('Sticker deleted!')
     except:
-        update.message.reply_text("Sorry, sticker set does not exist. :(")
+        update.message.reply_text('Sorry, sticker set does not exist. :(')
 
     return ConversationHandler.END
 
@@ -138,8 +140,7 @@ def stylesSelectDefault(bot, update):
     return SET_DEFAULT
 
 def changeDefault(bot, update):
-    global default_style
-    default_style = update.message.text
+    redis_client.hset(update.message.from_user.id, 'default_text', update.message.text)
     bot.send_message(update.message.chat_id, 'Okay! The default style is now ' + update.message.text + '.',
                         reply_markup=telegram.ReplyKeyboardRemove())
     return ConversationHandler.END
@@ -147,14 +148,15 @@ def changeDefault(bot, update):
 ##################
 # Start the bot #
 ##################
+
 def main():
-    updater = Updater("TOKEN")
+    updater = Updater('***REMOVED***')
     dp = updater.dispatcher
 
     # Set up commands
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("styles", styles))
+    dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(CommandHandler('help', help))
+    dp.add_handler(CommandHandler('styles', styles))
     dp.add_error_handler(error)
 
     # Handler to manage text styling
@@ -166,7 +168,7 @@ def main():
             STYLE_CATEGORY_SELECT: [MessageHandler(Filters.text, stylesCategory)]
         },
         fallbacks = [CommandHandler('cancel', cancel)],
-        conversation_timeout = 10.0,
+        conversation_timeout = 20.0,
     )
     dp.add_handler(textConvertHandler)
 
@@ -177,7 +179,7 @@ def main():
             DELETE_STICKER: [MessageHandler(Filters.text, deleteSticker)]
         },
         fallbacks = [CommandHandler('cancel', cancel)],
-        conversation_timeout = 10.0,
+        conversation_timeout = 20.0,
     )
     dp.add_handler(stickerDeleteHandler)
 
@@ -189,7 +191,7 @@ def main():
             SET_DEFAULT: [MessageHandler(Filters.text, changeDefault)]
         },
         fallbacks = [CommandHandler('cancel', cancel)],
-        conversation_timeout = 10.0,
+        conversation_timeout = 20.0,
     )
     dp.add_handler(defaultStyleHandler)
 
