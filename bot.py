@@ -91,11 +91,11 @@ def transformText(bot, update):
         bot.add_sticker_to_set(update.message.from_user.id, sticker_set_name,
             file.file_id, '😄')
     except Exception:
-        bot.create_new_sticker_set(update.message.from_user.id, sticker_set_name, 
+        bot.create_new_sticker_set(update.message.from_user.id, sticker_set_name,
             "WordArt_by_%s" % username, file.file_id, '😄')
     finally:
         sticker_set = bot.get_sticker_set(sticker_set_name)
-        bot.send_sticker(update.message.chat_id, sticker_set.stickers[-1], 
+        bot.send_sticker(update.message.chat_id, sticker_set.stickers[-1],
                             reply_markup=telegram.ReplyKeyboardRemove())
 
     return ConversationHandler.END
@@ -149,7 +149,7 @@ def changeDefault(bot, update):
 ##################
 
 def main():
-    updater = Updater('***REMOVED***')
+    updater = Updater('TOKEN')
     dp = updater.dispatcher
 
     # Set up commands
