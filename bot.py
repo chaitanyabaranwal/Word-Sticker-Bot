@@ -14,7 +14,6 @@ redis_client = redis.StrictRedis(host='localhost', port=6379, db=0, decode_respo
 
 # Other required constants
 CONVERT_TEXT, STYLE_SELECT, IMAGE_RESIZE, TEXT_TRANSFORM, DELETE_STICKER, STYLE_CATEGORY_SELECT, SET_DEFAULT = range(7)
-default_style = 'rainbow'
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name) - %(levelname)s - %(message)s',
@@ -91,7 +90,7 @@ def transformText(bot, update):
     try:
         bot.add_sticker_to_set(update.message.from_user.id, sticker_set_name,
             file.file_id, '😄')
-    except:
+    except Exception:
         bot.create_new_sticker_set(update.message.from_user.id, sticker_set_name, 
             "WordArt_by_%s" % username, file.file_id, '😄')
     finally:
@@ -140,7 +139,7 @@ def stylesSelectDefault(bot, update):
     return SET_DEFAULT
 
 def changeDefault(bot, update):
-    redis_client.hset(update.message.from_user.id, 'default_text', update.message.text)
+    redis_client.hset(update.message.from_user.id, 'default_style', update.message.text)
     bot.send_message(update.message.chat_id, 'Okay! The default style is now ' + update.message.text + '.',
                         reply_markup=telegram.ReplyKeyboardRemove())
     return ConversationHandler.END
